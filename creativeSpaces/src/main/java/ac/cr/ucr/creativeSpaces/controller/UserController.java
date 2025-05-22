@@ -103,20 +103,20 @@ public class UserController {
       /*@PostMapping
     public User addUser(@RequestBody User user){
         return this.userService.addUser(user);
-    }*/
+    }
 
-     /*@GetMapping("/{id}")
+     @GetMapping("/{id}")
     public User getUSer(@PathVariable Integer id){
         return this.userService.getUser(id);
-    }*/
+    }
 
-      /* @DeleteMapping ("/{id}")
+       @DeleteMapping ("/{id}")
     public User deleteUser(@PathVariable Integer id){
         return this.userService.deleteUser(id);
-     }*/
+     }
 
 
-    /*@PutMapping("/{id}")
+    @PutMapping("/{id}")
     public User editUser(@PathVariable Integer id, @RequestBody User useEdit){
         return this.userService.editUser(id, useEdit);
     }*/
