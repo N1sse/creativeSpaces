@@ -33,6 +33,7 @@ public class UserController {
         return "Little snowman " + name;
     }
 
+    //Obtener todos los usuarios
     @GetMapping("/{id}")
     public ResponseEntity<?> getUSer(@PathVariable Integer id){
       User user = this.userService.getUser(id);
@@ -43,11 +44,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    /*@GetMapping("/{id}")
-    public User getUSer(@PathVariable Integer id){
-        return this.userService.getUser(id);
-    }*/
-
+    // Agregar usuarios
     @PostMapping
     public ResponseEntity addUser(@Validated @RequestBody User user, BindingResult result){
        if (result.hasErrors()){
@@ -67,11 +64,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userAdd);
     }
 
-    /*@PostMapping
-    public User addUser(@RequestBody User user){
-        return this.userService.addUser(user);
-    }*/
-
+    //Borrar usuarios por su id
     @DeleteMapping ("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Integer id){
        if (this.userService.existID(id)){
@@ -81,12 +74,7 @@ public class UserController {
        return  ResponseEntity.status(HttpStatus.CONFLICT).body("El ID " + id +" no ha podido ser encontrado. Revise que este registrado");
     }
 
-    /* @DeleteMapping ("/{id}")
-    public User deleteUser(@PathVariable Integer id){
-        return this.userService.deleteUser(id);
-    }
-    }*/
-
+   //Editar los usuarios e identificarles por su id
     @PutMapping("/{id}")
     public ResponseEntity<?> editUser(@Validated @PathVariable Integer id, @RequestBody User userEdit, BindingResult result){
         if (result.hasErrors()){
@@ -107,6 +95,26 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario con el Id "+id+" no se ha podido editar");
     }
+    //----------------------------------------------
+
+     //Codigo Original
+    //------------
+
+      /*@PostMapping
+    public User addUser(@RequestBody User user){
+        return this.userService.addUser(user);
+    }*/
+
+     /*@GetMapping("/{id}")
+    public User getUSer(@PathVariable Integer id){
+        return this.userService.getUser(id);
+    }*/
+
+      /* @DeleteMapping ("/{id}")
+    public User deleteUser(@PathVariable Integer id){
+        return this.userService.deleteUser(id);
+     }*/
+
 
     /*@PutMapping("/{id}")
     public User editUser(@PathVariable Integer id, @RequestBody User useEdit){
