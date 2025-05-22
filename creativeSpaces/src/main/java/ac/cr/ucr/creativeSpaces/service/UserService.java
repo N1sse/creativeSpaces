@@ -4,9 +4,11 @@ import ac.cr.ucr.creativeSpaces.model.User;
 import ac.cr.ucr.creativeSpaces.repository.IRegisterUser;
 import ac.cr.ucr.creativeSpaces.repository.UserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class UserService implements IRegisterUser {
 
     @Autowired
@@ -35,5 +37,9 @@ public class UserService implements IRegisterUser {
     @Override
     public User editUser(Integer id, User userEdit) {
         return this.userRegister.editUser(id, userEdit);
+    }
+
+    public Boolean existID (Integer id){
+        return this.userRegister.existID(id);
     }
 }

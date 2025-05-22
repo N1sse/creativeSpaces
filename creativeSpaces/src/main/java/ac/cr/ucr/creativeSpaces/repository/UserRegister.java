@@ -1,10 +1,12 @@
 package ac.cr.ucr.creativeSpaces.repository;
 
 import ac.cr.ucr.creativeSpaces.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class UserRegister implements IRegisterUser {
 
     private ArrayList<User> listUser;
@@ -55,5 +57,14 @@ public class UserRegister implements IRegisterUser {
             }
         }
         return new User();
+    }
+
+    public Boolean existID(Integer id){
+        for (int i=0; i<this.listUser.size(); i++){
+            if (this.listUser.get(i).getId()==id){
+                return  true;
+            }
+        }
+        return false;
     }
 }

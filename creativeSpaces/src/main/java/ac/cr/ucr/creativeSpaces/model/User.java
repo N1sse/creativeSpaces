@@ -7,7 +7,7 @@ public class User {
     private String email;
 
     public User(){
-
+        this.id=0;
     }
 
     public User(Integer id, String name, String telephone, String email) {
