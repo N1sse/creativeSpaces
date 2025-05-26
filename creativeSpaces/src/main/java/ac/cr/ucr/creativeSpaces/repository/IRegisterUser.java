@@ -10,6 +10,4 @@ public interface IRegisterUser {
     public User getUser(Integer id);
     public User deleteUser(Integer id);
     public User editUser(Integer id, User userEdit);
-
-
 }
