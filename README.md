@@ -2,6 +2,7 @@
 
 | Hash    | Mensaje                                                        | Fecha      |
 |---------|----------------------------------------------------------------|------------|
+| 738bede | Agregando las partes iniciales de lo que necesita la ....      | 2025-05-25 |
 | 482ed84 | arreglando mini error de typeo en el readme...me dio toc       | 2025-05-22 |
 | 96419a9 | Mejorando README con historial de commits & diseño del read..  | 2025-05-22 |
 | 1bbda21 | Delete .github/workflows directory                             | 2025-05-22 |
