@@ -1,20 +1,25 @@
 package ac.cr.ucr.creativeSpaces.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_creative")
 public class Creative {
+
+    @Id
     private Integer idCreative;
     private String spacesName;
     private String location;
     private String typePlaces;
     private Boolean available;
     private String rentalDate;
-    private String equipment;
-    private Integer hours;
     private Integer price;
     private String owner;
 
     public Creative() {
         this.idCreative = 0;
-        this.hours = 0;
         this.price = 0;
     }
 
@@ -27,8 +32,6 @@ public class Creative {
         this.price = price;
         this.owner = owner;
         this.rentalDate = rentalDate;
-        this.equipment = equipment;
-        this.hours = hours;
     }
 
     public Integer getIdCreative() {
@@ -95,19 +98,5 @@ public class Creative {
         this.rentalDate = rentalDate;
     }
 
-    public String getEquipment() {
-        return equipment;
-    }
 
-    public void setEquipment(String equipment) {
-        this.equipment = equipment;
-    }
-
-    public Integer getHours() {
-        return hours;
-    }
-
-    public void setHours(Integer hours) {
-        this.hours = hours;
-    }
 }

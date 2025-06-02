@@ -19,7 +19,7 @@ public class UserRegister implements IRegisterUser {
     public User addUser(User user) {
        this.listUser.add(user);
         return user;
-    }//fin addUser
+    }//fin saveUser
 
     @Override
     public List<User> getAllUser() {
