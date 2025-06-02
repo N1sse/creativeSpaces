@@ -4,11 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "tb_creative")
+@Entity // Entidad que representa un espacio creativo en la base de datos
+@Table(name = "tb_creative") //Para poder crear la tabla y ponerle el nombre tb_creative
 public class Creative {
 
-    @Id
+    @Id //  Es para marcar una clave primaria mediante el jpa
     private Integer idCreative;
     private String spacesName;
     private String location;
@@ -21,7 +21,7 @@ public class Creative {
     public Creative() {
         this.idCreative = 0;
         this.price = 0;
-    }
+    } //fin const sin parámetros
 
     public Creative(String rentalDate, String equipment, Integer hours, Integer idCreative, String name, String location, String type, Boolean available, Integer price, String owner) {
         this.idCreative = idCreative;
@@ -32,8 +32,10 @@ public class Creative {
         this.price = price;
         this.owner = owner;
         this.rentalDate = rentalDate;
-    }
+    } //fin const con parámetros
 
+
+    //------------Set & Gets-----------
     public Integer getIdCreative() {
         return idCreative;
     }
@@ -99,4 +101,4 @@ public class Creative {
     }
 
 
-}
+}// fin Creative

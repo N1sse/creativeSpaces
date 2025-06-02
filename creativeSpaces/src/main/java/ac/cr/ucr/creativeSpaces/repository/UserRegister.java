@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Repository //Sirve para hacer una clase en repositorio
 public class UserRegister implements IRegisterUser {
 
     private ArrayList<User> listUser;
@@ -15,6 +15,7 @@ public class UserRegister implements IRegisterUser {
         this.listUser = new ArrayList<>();
     }
 
+    //@override = Sirve para sobrescribir el metodo de una clase padre o una interfaz
     @Override
     public User addUser(User user) {
        this.listUser.add(user);
@@ -60,6 +61,10 @@ public class UserRegister implements IRegisterUser {
     }
 
     public Boolean existID(Integer id){
+        //Este metodo no tiene el override, ya que la clase padre UserRegister no tiene ese metodo
+
+        //-----
+        //Este metodo permite comprobar si hay un id igual
         for (int i=0; i<this.listUser.size(); i++){
             if (this.listUser.get(i).getId()==id){
                 return  true;

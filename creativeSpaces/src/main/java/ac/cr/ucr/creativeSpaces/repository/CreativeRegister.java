@@ -2,10 +2,12 @@ package ac.cr.ucr.creativeSpaces.repository;
 
 import ac.cr.ucr.creativeSpaces.model.Creative;
 import ac.cr.ucr.creativeSpaces.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository //Sirve para hacer una clase en repositorio
 public class CreativeRegister implements IRegisterCreative{
 
     private ArrayList<Creative> listCreative;

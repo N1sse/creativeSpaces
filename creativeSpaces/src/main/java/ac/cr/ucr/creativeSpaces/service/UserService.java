@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service  // Es para poder hacer una clase de servicio y ser gestionada por el spring (bean de servicio)
 public class UserService {
 
-    @Autowired
-    private UserRepository  userRepository;
+    @Autowired //Es para inyectar dependencias
+    private UserRepository  userRepository; // En este caso inyectar las dependencias de userRepository en el userServices
 
 
     public User saveUser(User user) {
@@ -35,10 +35,8 @@ public class UserService {
     }
 
 
-
-
    /*
-
+   Código original, este se cambio por la clase del jueves 29 de mayo
     @Autowired
     UserRegister userRegister;
 

@@ -4,10 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "tb_user")
+@Entity // Entidad que representa un usuario en la base de datos
+@Table(name = "tb_user")  //Para poder crear la tabla y ponerle el nombre tb_user
 public class User {
-    @Id
+    @Id //  Es para marcar una clave primaria mediante el jpa
     private Integer id;
     private String name;
     private String telephone;
@@ -15,15 +15,18 @@ public class User {
 
     public User(){
         this.id=0;
-    }
+    } //fin const sin parametros
 
     public User(Integer id, String name, String telephone, String email) {
         this.id = id;
         this.name = name;
         this.telephone = telephone;
         this.email = email;
-    }
+    } //fin const con parametros
 
+    //------------Set & Gets-----------
+    //---
+    //set & get id
     public Integer getId() {
         return id;
     }
@@ -32,6 +35,7 @@ public class User {
         this.id = id;
     }
 
+    //set & get name
     public String getName() {
         return name;
     }
@@ -40,6 +44,7 @@ public class User {
         this.name = name;
     }
 
+    //set & get telephone
     public String getTelephone() {
         return telephone;
     }
@@ -48,6 +53,7 @@ public class User {
         this.telephone = telephone;
     }
 
+    //set & get email
     public String getEmail() {
         return email;
     }

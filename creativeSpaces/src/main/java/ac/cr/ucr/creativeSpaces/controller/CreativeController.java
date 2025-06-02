@@ -22,6 +22,7 @@ public class CreativeController {
     @Autowired
     CreativeServices creativeServices;
 /*
+--API debe permitir:
 ● Listar todos los espacios creativos
 ● Agregar un nuevo espacio creativo.
 ● Actualizar los datos de un espacio creativo.
@@ -31,10 +32,10 @@ public class CreativeController {
 ● Postman para pruebas de endpoints
  */
 
-    // Mostrar todos los espacios creativos
+    // Muestra la lista de todos los espacios creativos
     @GetMapping
     public List<Creative> getAllCreative() {
-        return this.creativeServices.findAllCreative();
+        return this.creativeServices.findAllCreative();  // Retorna/Busca todos los espacios creativos
     }
 
     // Mostrar datos de un espacio creativo por ID
@@ -51,37 +52,40 @@ public class CreativeController {
     @PostMapping
     public ResponseEntity<?> addCreative(@Validated @RequestBody Creative creative, @org.jetbrains.annotations.NotNull BindingResult result) {
         if (result.hasErrors()) {
+            // Esta parte es para validar errores
             Map<String, String> errors = new HashMap<>();
             for (FieldError error : result.getFieldErrors()) {
                 errors.put(error.getField(), error.getDefaultMessage());
             }
             return ResponseEntity.badRequest().body(errors);
         }
-        Creative newCreative = this.creativeServices.saveCreative(creative);
+        Creative newCreative = this.creativeServices.saveCreative(creative); //guarda los datos del espacio
         return ResponseEntity.status(HttpStatus.CREATED).body(newCreative);
     }
 
-    // Editar un espacio creativo
+    // Editar los datos de un espacio creativo, gracias a su ID
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCreative(@PathVariable Integer id, @RequestBody Creative creativeEdit) {
         Optional<Creative> creative = this.creativeServices.findByIDCreative(id);
         if (creative==null || creative.get().getIdCreative() == 0) {
+            // Esta parte es para validar errores y mostrar un mensaje que no se encontró el ID
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el espacio creativo con el ID " + id);
         }
 
         creativeEdit.setIdCreative(id); // Asegurar que el ID coincida
-        Creative updatedCreative = this.creativeServices.saveCreative(creativeEdit);
+        Creative updatedCreative = this.creativeServices.saveCreative(creativeEdit);//guarda los nuevos datos del espacio
         return ResponseEntity.ok(updatedCreative);
     }
 
-    // Eliminar un espacio creativo por ID
+    // Eliminar un espacio creativo por su ID
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCreative(@PathVariable Integer id) {
         Optional<Creative> creative = this.creativeServices.findByIDCreative(id);
         if (creative.isEmpty() || creative.get().getIdCreative() == 0) {
+            // Esta parte es para validar errores y mostrar un mensaje que no se encontró el ID
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El ID " + id + " no ha podido ser encontrado.");
         }
-        this.creativeServices.deleteCreative(id);
+        this.creativeServices.deleteCreative(id); //elimina el espacio
         return ResponseEntity.ok("El espacio creativo con el ID " + id + " fue eliminado exitosamente.");
     }
 
@@ -90,6 +94,7 @@ public class CreativeController {
     public ResponseEntity<?> findByType(@RequestParam String type) {
         List<Creative> creative = this.creativeServices.findByType(type);
         if (creative.isEmpty()) {
+            //Esta parte es para validar si no hay datos así
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("No se encontraron espacios creativos de tipo " + type);
         }
@@ -101,6 +106,7 @@ public class CreativeController {
     public ResponseEntity<?> findByLocation(@RequestParam String location) {
         List<Creative> creative = this.creativeServices.findByLocation(location);
         if (creative.isEmpty()) {
+            //Esta parte es para validar si no hay datos así
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("No se encontraron espacios creativos que se ubiquen en " + location);
         }
@@ -124,4 +130,4 @@ public class CreativeController {
         return this.creativeServices.editSpaces(id,  spacesEdit);
     }
     */
-}
+} //fin del creative controller

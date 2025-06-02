@@ -24,17 +24,8 @@ public class UserController {
 
     @GetMapping
     public List<User> getAllUsers(){
-        return this.userService.findAllUser();
+        return this.userService.findAllUser(); //Retorna / busca todos los usuarios
     }
-
-
-    //Ejemplo
-    /*
-    @GetMapping("/mensaje/{name}")
-    public String mensaje(@PathVariable String name){
-        return "Little snowman " + name;
-    }
-    */
 
 
     //Obtener usuario
@@ -83,7 +74,36 @@ public class UserController {
     }
 
     /*
+
+    //----------------------------------------------
+
+     //Codigo Original
+    //------------
+
+    @PostMapping
+
+    public User saveUser(@RequestBody User user){
+        return this.userService.saveUser(user);
+    }
+
+     @GetMapping("/{id}")
+    public User getUSer(@PathVariable Integer id){
+        return this.userService.getUser(id);
+    }
+
+       @DeleteMapping ("/{id}")
+    public User deleteUser(@PathVariable Integer id){
+        return this.userService.deleteUser(id);
+     }
+
+
+    @PutMapping("/{id}")
+    public User editUser(@PathVariable Integer id, @RequestBody User useEdit){
+        return this.userService.editUser(id, useEdit);
+
    //Editar los usuarios e identificarles por su id
+   //Esta parte el unico al tener sus comentarios originales, ya que no se edito en la clase
+
     @PutMapping("/{id}")
     public ResponseEntity<?> editUser(@Validated @PathVariable Integer id, @RequestBody User userEdit, BindingResult result){
         if (result.hasErrors()){
@@ -107,34 +127,10 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario con el Id "+id+" no se ha podido editar");
     }
 
-    //----------------------------------------------
-
-     //Codigo Original
-    //------------
-
-      /*@PostMapping
-    public User saveUser(@RequestBody User user){
-        return this.userService.saveUser(user);
-    }
-
-     @GetMapping("/{id}")
-    public User getUSer(@PathVariable Integer id){
-        return this.userService.getUser(id);
-    }
-
-       @DeleteMapping ("/{id}")
-    public User deleteUser(@PathVariable Integer id){
-        return this.userService.deleteUser(id);
-     }
-
-
-    @PutMapping("/{id}")
-    public User editUser(@PathVariable Integer id, @RequestBody User useEdit){
-        return this.userService.editUser(id, useEdit);
-
    //----------------------------------------------
 
-    //Ejemplo ejercicio suma
+    //Ejemplos vistos en clase
+    //ejem ejercicio suma
     @GetMapping("/{a}/{b}")
     public String suma(@PathVariable Integer a, @PathVariable Integer b){
        Integer suma=a+b;
@@ -142,6 +138,14 @@ public class UserController {
             return "Es mayor de edad";
         }
         return "Es menor de edad";
-    } */
-}//fin
+    }
+
+   //Ejemplo de mensaje
+    @GetMapping("/mensaje/{name}")
+    public String mensaje(@PathVariable String name){
+        return "Little snowman " + name;
+    }
+    */
+
+}//fin del user controller
 

@@ -1,51 +1,49 @@
 package ac.cr.ucr.creativeSpaces.service;
 
 import ac.cr.ucr.creativeSpaces.model.Creative;
-import ac.cr.ucr.creativeSpaces.model.User;
 import ac.cr.ucr.creativeSpaces.repository.CreativeRegister;
 import ac.cr.ucr.creativeSpaces.repository.CreativeRepository;
 import ac.cr.ucr.creativeSpaces.repository.IRegisterCreative;
-import ac.cr.ucr.creativeSpaces.repository.UserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service //Para hacer CreativeServices en un bean de servicio
 public class CreativeServices{
 
-    @Autowired
+    @Autowired // Para inyectar las dependencias de creativeRepository en el creativeServices
     private CreativeRepository creativeRepository;
 
-    // Guardar o actualizar espacio
+    // Guardar un nuevo espacio creativo
     public Creative saveCreative(Creative creative) {
         return this.creativeRepository.save(creative);
     }
 
-    // Listar todos los espacios
+    // Enlistar todos los espacios creativos
     public List<Creative> findAllCreative() {
         return this.creativeRepository.findAll();
     }
 
-    // Buscar por ID
+    // Buscar espacio creativo por su ID
     public Optional<Creative> findByIDCreative(Integer id) {
         return this.creativeRepository.findById(id);
     }
 
-    // Eliminar por ID
+    // Eliminar espacio creativo por su ID
     public void deleteCreative(Integer id) {
         this.creativeRepository.deleteById(id);
     }
 
-    // Buscar por tipo
+    // Busca tipos de lugares
     public List<Creative> findByType(String type) {
         return creativeRepository.findAll().stream()
                 .filter(c -> c.getTypePlaces() != null && c.getTypePlaces().toLowerCase().contains(type.toLowerCase()))
                 .toList();
     }
 
-    // Buscar por ubicación
+    // Busca las ubicaciones
     public List<Creative> findByLocation(String location) {
         return creativeRepository.findAll().stream()
                 .filter(c -> c.getLocation() != null && c.getLocation().toLowerCase().contains(location.toLowerCase()))
@@ -55,7 +53,7 @@ public class CreativeServices{
 
 
     /*
-    // Código original con repositorio en memoria (CreativeRegister)
+    Código original, este se cambio por la clase del jueves 29 de mayo
 
     @Autowired
     CreativeRegister creativeRegister;
@@ -88,4 +86,4 @@ public class CreativeServices{
         return this.creativeRegister.creativeExistsID(idCreative);
     }
     */
-}
+}// fin creativeServices
